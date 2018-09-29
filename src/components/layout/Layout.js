@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import autoprefixer from 'material-ui/utils/autoprefixer';
 import withWidth from 'material-ui/utils/withWidth';
-import { Card } from 'material-ui/Card';
+import { Card, CardMedia } from 'material-ui/Card';
 import AppBar from './AppBar';
+import Chart from '../ui/Chart';
 
 const styles = {
   main: {
@@ -67,7 +68,9 @@ class Layout extends Component {
             }
           >
             <Card>
-              
+              <CardMedia>
+                <Chart />
+              </CardMedia>
             </Card>
           </div>
         </div>
