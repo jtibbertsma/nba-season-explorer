@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import Theme from './components/providers/Theme';
 
 class App extends Component {
   render() {
     return (
-      <div />
+      <Theme>
+        <div />
+      </Theme>
     );
   }
 }
