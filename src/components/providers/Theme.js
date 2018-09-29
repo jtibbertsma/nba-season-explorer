@@ -1,5 +1,6 @@
 import React, { Component, Children } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {
   cyan500, cyan700,
   pinkA200,
@@ -10,7 +11,7 @@ import { fade } from 'material-ui/utils/colorManipulator';
 import spacing from 'material-ui/styles/spacing';
 
 export default class Theme extends Component {
-  static theme = {
+  static theme = getMuiTheme({
     spacing: spacing,
     fontFamily: 'Roboto, sans-serif',
     palette: {
@@ -29,7 +30,7 @@ export default class Theme extends Component {
       clockCircleColor: fade(darkBlack, 0.07),
       shadowColor: fullBlack,
     },
-  };
+  });
 
   render() {
     return (
