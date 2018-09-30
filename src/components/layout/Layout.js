@@ -1,64 +1,57 @@
 import React, { Component } from 'react';
-import withWidth from '@material-ui/core/withWidth';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from './AppBar';
 import Chart from '../ui/Chart';
+import ImportData from '../ui/ImportData';
+import FilterType from '../ui/FilterType';
 
-const styles = {
+const styles = theme => ({
   main: {
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
   },
   body: {
-    backgroundColor: '#edecec',
+    backgroundColor: '#fff',
     display: 'flex',
     flex: 1,
     overflowY: 'hidden',
     overflowX: 'scroll',
-  },
-  bodySmall: {
-    backgroundColor: '#fff',
+    [theme.breakpoints.up('sm')]: {
+      backgroundColor: '#edecec'
+    }
   },
   content: {
     flex: 1,
-    padding: '2em',
-  },
-  contentSmall: {
-    flex: 1,
     paddingTop: '3em',
-  }
-};
+    [theme.breakpoints.up('sm')]: {
+      padding: '2em'
+    }
+  },
+});
 
 class Layout extends Component {
   render() {
-    const { width, classes } = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.main}>
         <AppBar />
-        <div
-          className={
-            width === 'xs' || width === 'sm' ? (
-              classes.bodySmall
-            ) : (
-              classes.body
-            )
-          }
-        >
-          <div
-            className={
-              width === 'xs' || width === 'sm' ? (
-                classes.contentSmall
-              ) : (
-                classes.content
-              )
-            }
-          >
+        <div className={classes.body}>
+          <div className={classes.content}>
             <Card>
               <CardContent>
                 <Chart />
+                <Grid container spacing={24}>
+                  <Grid item xs={12} sm={5}>
+                    <ImportData />
+                  </Grid>
+                  <Grid item xs={12} sm={5}>
+                    <FilterType />
+                  </Grid>
+                </Grid>
               </CardContent>
             </Card>
           </div>
@@ -68,4 +61,4 @@ class Layout extends Component {
   }
 }
 
-export default withStyles(styles)(withWidth()(Layout));
+export default withStyles(styles)(Layout);

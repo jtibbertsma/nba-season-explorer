@@ -1,5 +1,6 @@
 import {
-  SET_SELECTED_TEAMS
+  SET_SELECTED_TEAMS,
+  SET_SHOW_TYPE
 } from '../constants/actions';
 
 const defaultState = {
@@ -13,6 +14,12 @@ export default function filtersReducer(state = defaultState, action) {
       return {
         ...state,
         selectedTeams: action.payload
+      };
+
+    case SET_SHOW_TYPE:
+      return {
+        ...state,
+        showType: action.payload
       };
 
     default:
