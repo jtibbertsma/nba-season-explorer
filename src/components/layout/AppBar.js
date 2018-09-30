@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import MuiAppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
+import SelectTeams from '../ui/SelectTeams';
 
 const styles = theme => ({
   grow: {
@@ -42,10 +42,7 @@ class AppBar extends Component {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.search}>
-            <Input
-              placeholder="Search…"
-              disableUnderline
-            />
+            <SelectTeams />
           </div>
         </Toolbar>
       </MuiAppBar>
