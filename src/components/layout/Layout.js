@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import muiThemeable from 'material-ui/styles/muiThemeable';
-import autoprefixer from 'material-ui/utils/autoprefixer';
-import withWidth from 'material-ui/utils/withWidth';
-import { Card, CardMedia } from 'material-ui/Card';
+import withWidth from '@material-ui/core/withWidth';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import { withStyles } from '@material-ui/core/styles';
 import AppBar from './AppBar';
 import Chart from '../ui/Chart';
 
@@ -32,45 +32,34 @@ const styles = {
   }
 };
 
-const prefixedStyles = {};
-
 class Layout extends Component {
   render() {
-    const { muiTheme, width } = this.props;
-    if (!prefixedStyles.main) {
-      // do this once because user agent never changes
-      const prefix = autoprefixer(muiTheme);
-      prefixedStyles.main = prefix(styles.main);
-      prefixedStyles.body = prefix(styles.body);
-      prefixedStyles.bodySmall = prefix(styles.bodySmall);
-      prefixedStyles.content = prefix(styles.content);
-      prefixedStyles.contentSmall = prefix(styles.contentSmall);
-    }
+    const { width, classes } = this.props;
     return (
-      <div style={prefixedStyles.main}>
+      <div className={classes.main}>
         <AppBar />
         <div
-          style={
-            width === 1 ? (
-              prefixedStyles.bodySmall
+          className={
+            width === 'xs' || width === 'sm' ? (
+              classes.bodySmall
             ) : (
-              prefixedStyles.body
+              classes.body
             )
           }
         >
           <div
-            style={
-              width === 1 ? (
-                prefixedStyles.contentSmall
+            className={
+              width === 'xs' || width === 'sm' ? (
+                classes.contentSmall
               ) : (
-                prefixedStyles.content
+                classes.content
               )
             }
           >
             <Card>
-              <CardMedia>
+              <CardContent>
                 <Chart />
-              </CardMedia>
+              </CardContent>
             </Card>
           </div>
         </div>
@@ -79,4 +68,4 @@ class Layout extends Component {
   }
 }
 
-export default muiThemeable()(withWidth()(Layout));
+export default withStyles(styles)(withWidth()(Layout));
