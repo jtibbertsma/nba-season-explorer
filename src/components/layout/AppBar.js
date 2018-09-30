@@ -7,9 +7,6 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  root: {
-    width: '100%',
-  },
   grow: {
     flexGrow: 1,
   },

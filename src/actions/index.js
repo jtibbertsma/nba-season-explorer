@@ -1,6 +1,10 @@
 import { createAction } from 'redux-actions';
 import {
-  SET_SIDEBAR_VISIBILITY
+  IMPORT_DATA,
+  LOAD_DATA,
+  SET_NEED_LOAD_DATA
 } from '../constants/actions';
 
-export const setSidebarVisibility = createAction(SET_SIDEBAR_VISIBILITY);
+export const importData = createAction(IMPORT_DATA);
+export const loadData = createAction(LOAD_DATA);
+export const setNeedLoadData = createAction(SET_NEED_LOAD_DATA);
